@@ -2,6 +2,7 @@
 using System.Text.RegularExpressions;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using SDG_overflow.Models;
 
 namespace sdg_overflow
 {
@@ -28,8 +29,7 @@ namespace sdg_overflow
       if (!optionsBuilder.IsConfigured)
       {
         var envConn = Environment.GetEnvironmentVariable("DATABASE_URL");
-#warning Be sure to update to your correct connection string to the point to the correct database
-        var conn = "server=localhost;database=SdgTemplate";
+        var conn = "server=localhost;database=SdgOverflowDatabase";
         if (envConn != null)
         {
           conn = ConvertPostConnectionToConnectionString(envConn);
@@ -44,5 +44,7 @@ namespace sdg_overflow
     {
       modelBuilder.HasAnnotation("ProductVersion", "2.2.0-rtm-35687");
     }
+    public DbSet<Question> Question { get; set; }
+    public DbSet<Answer> Answer { get; set; }
   }
 }

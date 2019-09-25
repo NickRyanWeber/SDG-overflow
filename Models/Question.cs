@@ -11,5 +11,6 @@ namespace SDG_overflow.Models
     public int QUpVotes { get; set; }
     public int QDownVotes { get; set; }
     public DateTime DateCreated { get; set; } = DateTime.Now;
+    public List<Answer> Answer { get; set; } = new List<Answer>();
   }
 }
