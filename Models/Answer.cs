@@ -9,5 +9,7 @@ namespace SDG_overflow.Models
     public int AUpVote { get; set; }
     public int ADownVote { get; set; }
     public DateTime DateAdded { get; set; } = DateTime.Now;
+    public int QuestionId { get; set; }
+    public Question Question { get; set; }
   }
 }
