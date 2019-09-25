@@ -2,7 +2,7 @@ using System;
 
 namespace SDG_overflow.Models
 {
-  public class Comment
+  public class Answer
   {
     public int Id { get; set; }
     public string AnswerDescription { get; set; }
