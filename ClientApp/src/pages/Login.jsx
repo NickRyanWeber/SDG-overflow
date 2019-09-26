@@ -8,4 +8,4 @@ const Login = () => {
   )
 }
 
-export default n
+export default Login
