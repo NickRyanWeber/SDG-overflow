@@ -46,5 +46,6 @@ namespace sdg_overflow
     }
     public DbSet<Question> Question { get; set; }
     public DbSet<Answer> Answer { get; set; }
+    public DbSet<User> Users { get; set; }
   }
 }

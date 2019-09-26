@@ -12,5 +12,7 @@ namespace SDG_overflow.Models
     public int QDownVotes { get; set; }
     public DateTime DateCreated { get; set; } = DateTime.Now;
     public List<Answer> Answer { get; set; } = new List<Answer>();
+    public int? UserId { get; set; }
+    public User User { get; set; }
   }
 }
