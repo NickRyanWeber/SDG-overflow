@@ -19,7 +19,13 @@ export class NewUser extends Component {
   render() {
     return (
       <div>
-        <button onClick={this.NewUser}>Sign up</button>
+        <form className="email-password-form">
+          <label>Email</label>
+          <input type="text"></input>
+          <label>Password</label>
+          <input type="text"></input>
+          <button onClick={this.NewUser}>Sign up</button>
+        </form>
       </div>
     )
   }

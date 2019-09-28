@@ -26,8 +26,14 @@ export class Login extends Component {
   render() {
     return (
       <div>
-        <button onClick={this.LogIn}>Log In</button>
-        <button onClick={this.getSecretThing}>get the secret thing</button>
+        <form className="email-password-form">
+          <label>Email</label>
+          <input type="text"></input>
+          <label>Password</label>
+          <input type="text"></input>
+          <button onClick={this.LogIn}>Log In</button>
+          <button onClick={this.getSecretThing}>get the secret thing</button>
+        </form>
       </div>
     )
   }
