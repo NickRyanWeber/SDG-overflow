@@ -26,8 +26,7 @@ export class Home extends Component {
   render() {
     return (
       <div>
-        <button onClick={this.LogIn}>Log In</button>
-        <button onClick={this.getSecretThing}>get the secret thing</button>
+        <h2>List of questions will go here</h2>
       </div>
     )
   }
