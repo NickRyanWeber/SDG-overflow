@@ -30,7 +30,7 @@ export class Login extends Component {
           <label>Email</label>
           <input type="text"></input>
           <label>Password</label>
-          <input type="text"></input>
+          <input type="password"></input>
           <button onClick={this.LogIn}>Log In</button>
           <button onClick={this.getSecretThing}>get the secret thing</button>
         </form>

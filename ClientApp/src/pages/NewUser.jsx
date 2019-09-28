@@ -23,7 +23,7 @@ export class NewUser extends Component {
           <label>Email</label>
           <input type="text"></input>
           <label>Password</label>
-          <input type="text"></input>
+          <input type="password"></input>
           <button onClick={this.NewUser}>Sign up</button>
         </form>
       </div>
