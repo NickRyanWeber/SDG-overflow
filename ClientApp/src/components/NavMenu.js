@@ -39,7 +39,7 @@ export class NavMenu extends Component {
         >
           <Container>
             <NavbarBrand tag={Link} to="/">
-              <img src={logo} />
+              <img className="sdg-nav-logo" src={logo} />
             </NavbarBrand>
             <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
             <Collapse
@@ -49,16 +49,23 @@ export class NavMenu extends Component {
             >
               <ul className="navbar-nav flex-grow">
                 <NavItem>
+                  <input
+                    className="search-bar"
+                    type="text"
+                    placeholder="Search..."
+                  />
+                </NavItem>
+                <NavItem>
                   <NavLink tag={Link} className="text-dark" to="/login">
-                    Login
+                    Log in
                   </NavLink>
                 </NavItem>
                 <NavItem>
                   <NavLink tag={Link} className="text-dark" to="/new-user">
-                    New User
+                    Sign up
                   </NavLink>
                 </NavItem>
-                <NavItem>
+                {/* <NavItem>
                   <NavLink tag={Link} className="text-dark" to="/">
                     Home
                   </NavLink>
@@ -72,7 +79,7 @@ export class NavMenu extends Component {
                   <NavLink tag={Link} className="text-dark" to="/fetch-data">
                     Fetch data
                   </NavLink>
-                </NavItem>
+                </NavItem> */}
               </ul>
             </Collapse>
           </Container>
