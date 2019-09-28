@@ -23,7 +23,7 @@ export default class App extends Component {
         <Route path="/new-question" component={AskQuestionPage} />
         <Route path="/login" component={Login} />
         <Route path="/new-user" component={NewUser} />
-        <Route path="/{:qId}" component={QuestionPage} />
+        <Route path="/q/:qId" component={QuestionPage} />
       </Layout>
     )
   }
