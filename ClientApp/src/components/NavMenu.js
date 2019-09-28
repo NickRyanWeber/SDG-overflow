@@ -10,6 +10,7 @@ import {
 } from 'reactstrap'
 import { Link } from 'react-router-dom'
 import './NavMenu.css'
+import logo from '../images/SDGOverFlowLogo.svg'
 
 export class NavMenu extends Component {
   static displayName = NavMenu.name
@@ -38,7 +39,7 @@ export class NavMenu extends Component {
         >
           <Container>
             <NavbarBrand tag={Link} to="/">
-              Sdg React Template
+              <img className="sdg-nav-logo" src={logo} alt="SDG Logo" />
             </NavbarBrand>
             <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
             <Collapse
@@ -48,6 +49,23 @@ export class NavMenu extends Component {
             >
               <ul className="navbar-nav flex-grow">
                 <NavItem>
+                  <input
+                    className="search-bar"
+                    type="text"
+                    placeholder="Search..."
+                  />
+                </NavItem>
+                <NavItem>
+                  <NavLink tag={Link} className="text-dark" to="/login">
+                    Log in
+                  </NavLink>
+                </NavItem>
+                <NavItem>
+                  <NavLink tag={Link} className="text-dark" to="/new-user">
+                    Sign up
+                  </NavLink>
+                </NavItem>
+                {/* <NavItem>
                   <NavLink tag={Link} className="text-dark" to="/">
                     Home
                   </NavLink>
@@ -61,7 +79,7 @@ export class NavMenu extends Component {
                   <NavLink tag={Link} className="text-dark" to="/fetch-data">
                     Fetch data
                   </NavLink>
-                </NavItem>
+                </NavItem> */}
               </ul>
             </Collapse>
           </Container>
