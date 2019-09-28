@@ -39,7 +39,7 @@ export class NavMenu extends Component {
         >
           <Container>
             <NavbarBrand tag={Link} to="/">
-              <img className="sdg-nav-logo" src={logo} />
+              <img className="sdg-nav-logo" src={logo} alt="SDG Logo" />
             </NavbarBrand>
             <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
             <Collapse
