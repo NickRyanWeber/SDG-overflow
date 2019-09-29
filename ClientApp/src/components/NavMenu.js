@@ -1,3 +1,6 @@
+// So this wasn't easy to make a functional component.
+// I left all the comments in incase we need some of this stuff later, but it was breaking everything
+
 import React from 'react'
 import {
   Collapse,

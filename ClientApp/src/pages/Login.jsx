@@ -1,20 +1,26 @@
-import React, { Component } from 'react'
+import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 
-export class Login extends Component {
-  static displayName = Login.name
+const Login = () => {
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [userName, setUserName] = useState('')
 
-  LogIn = () => {
-    axios
-      .post('/auth/login', { email: 'test@test.com', password: 'password123' })
+  const LogIn = async () => {
+    const data = await axios
+      .post('/auth/login', {
+        Email: email,
+        Password: password,
+        Username: userName
+      })
       .then(resp => {
         console.log(resp.data)
         sessionStorage.setItem('token', resp.data.token)
       })
   }
 
-  getSecretThing = () => {
-    axios
+  const getSecretThing = async () => {
+    const resp = await axios
       .get('/api/secret', {
         headers: { Authorization: 'bearer ' + sessionStorage.getItem('token') }
       })
@@ -22,19 +28,18 @@ export class Login extends Component {
         console.log(resp.data)
       })
   }
-
-  render() {
-    return (
-      <div>
-        <form className="email-password-form">
-          <label>Email</label>
-          <input type="text"></input>
-          <label>Password</label>
-          <input type="password"></input>
-          <button onClick={this.LogIn}>Log In</button>
-          <button onClick={this.getSecretThing}>get the secret thing</button>
-        </form>
-      </div>
-    )
-  }
+  return (
+    <>
+      <form className="email-password-form">
+        <label>Email</label>
+        <input type="text"></input>
+        <label>Password</label>
+        <input type="password"></input>
+        <button onClick={() => LogIn()}>Log In</button>
+        <button onClick={() => getSecretThing()}>get the secret thing</button>
+      </form>
+    </>
+  )
 }
+
+export default Login
