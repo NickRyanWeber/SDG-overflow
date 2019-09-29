@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import axios from 'axios'
 
 const Login = () => {
@@ -32,9 +32,26 @@ const Login = () => {
     <>
       <form className="email-password-form">
         <label>Email</label>
-        <input type="text"></input>
+        <input
+          type="text"
+          onChange={e => {
+            setEmail(e.target.value)
+          }}
+        ></input>
+        <label>UserName</label>
+        <input
+          type="text"
+          onChange={e => {
+            setUserName(e.target.value)
+          }}
+        ></input>
         <label>Password</label>
-        <input type="password"></input>
+        <input
+          type="password"
+          onChange={e => {
+            setPassword(e.target.value)
+          }}
+        ></input>
         <button onClick={() => LogIn()}>Log In</button>
         <button onClick={() => getSecretThing()}>get the secret thing</button>
       </form>
