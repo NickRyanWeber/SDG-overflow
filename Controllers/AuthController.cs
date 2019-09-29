@@ -9,6 +9,7 @@ using SDG_overflow.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
+using System.Collections.Generic;
 
 namespace SDG_overflow.Controllers
 {
@@ -114,6 +115,13 @@ namespace SDG_overflow.Controllers
         return Ok(new { token = token, user, message = "Hello!" });
 
       }
+    }
+
+    [HttpGet]
+    public ActionResult<IEnumerable<User>> GetAllUsers()
+    {
+      var users = context.Users.OrderByDescending(user => user.DateSignedUp);
+      return users.ToList();
     }
 
   }
