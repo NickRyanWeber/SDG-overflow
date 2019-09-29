@@ -52,8 +52,8 @@ namespace SDG_overflow.Controllers
         var payload = new SecurityTokenDescriptor
         {
           Subject = new ClaimsIdentity(new[]{
-               new Claim(ClaimTypes.Name, user.Email),
-               new Claim("id", user.Id.ToString())
+                new Claim(ClaimTypes.Name, user.Email),
+                new Claim("id", user.Id.ToString())
             }),
           Expires = expirationTime,
           SigningCredentials = new SigningCredentials(
@@ -98,8 +98,8 @@ namespace SDG_overflow.Controllers
         var payload = new SecurityTokenDescriptor
         {
           Subject = new ClaimsIdentity(new[]{
-               new Claim(ClaimTypes.Name, user.Email),
-               new Claim("id", user.Id.ToString())
+                new Claim(ClaimTypes.Name, user.Email),
+                new Claim("id", user.Id.ToString())
             }),
           Expires = expirationTime,
           SigningCredentials = new SigningCredentials(

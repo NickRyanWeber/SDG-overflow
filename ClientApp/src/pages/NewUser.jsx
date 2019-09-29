@@ -1,8 +1,13 @@
-import React, { Component } from 'react'
+import React, { Component, useEffect, useState } from 'react'
 import axios from 'axios'
 
 export class NewUser extends Component {
-  static displayName = NewUser.name
+  // not sure if this is needed, so keeping it for now
+  // static displayName = NewUser.name
+
+  // doesn't like useState for some reason. Building another to test
+  // const [email, setEmail] = useState("")
+  // const [password, setPassword] = useState("")
 
   NewUser = () => {
     axios
