@@ -57,6 +57,11 @@ const NavMenu = () => {
                 />
               </NavItem>
               <NavItem>
+                <NavLink tag={Link} className="text-dark" to="/q/:qId">
+                  Ask Question
+                </NavLink>
+              </NavItem>
+              <NavItem>
                 <NavLink tag={Link} className="text-dark" to="/login">
                   Log in
                 </NavLink>

@@ -38,13 +38,13 @@ const Login = () => {
             setEmail(e.target.value)
           }}
         ></input>
-        <label>UserName</label>
+        {/* <label>UserName</label>
         <input
           type="text"
           onChange={e => {
             setUserName(e.target.value)
           }}
-        ></input>
+        ></input> */}
         <label>Password</label>
         <input
           type="password"
@@ -53,6 +53,7 @@ const Login = () => {
           }}
         ></input>
         <button
+          className="form-button"
           onClick={() => {
             LogIn()
           }}
@@ -60,6 +61,7 @@ const Login = () => {
           Log In
         </button>
         <button
+          className="form-button"
           onClick={e => {
             getSecretThing()
             e.preventDefault()

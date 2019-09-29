@@ -25,3 +25,14 @@ html {
   margin: 0.3rem 2rem 0rem 3rem;
   width: 25rem;
 }
+
+.email-password-form {
+  display: flex;
+  flex-direction: column;
+  max-width: 18rem;
+  justify-content: center;
+}
+
+.form-button {
+  margin: 1rem 0rem 0rem 0rem;
+}

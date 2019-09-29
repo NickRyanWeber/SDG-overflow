@@ -29,7 +29,7 @@ const NewUser = () => {
             setEmail(e.target.value)
           }}
         ></input>
-        <label>UserName</label>
+        <label>Display Name</label>
         <input
           type="text"
           onChange={e => {
@@ -44,6 +44,7 @@ const NewUser = () => {
           }}
         ></input>
         <button
+          className="form-button"
           onClick={e => {
             NewUser()
             e.preventDefault()
