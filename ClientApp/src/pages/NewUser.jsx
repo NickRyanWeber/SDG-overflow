@@ -6,7 +6,7 @@ const NewUser = () => {
   const [password, setPassword] = useState('')
   const [userName, setUserName] = useState('')
 
-  const NewUser = async () => {
+  const NewUser = async e => {
     const data = await axios
       .post('/auth/register', {
         Email: email,
@@ -29,6 +29,13 @@ const NewUser = () => {
             setEmail(e.target.value)
           }}
         ></input>
+        <label>UserName</label>
+        <input
+          type="text"
+          onChange={e => {
+            setUserName(e.target.value)
+          }}
+        ></input>
         <label>Password</label>
         <input
           type="password"
@@ -36,14 +43,14 @@ const NewUser = () => {
             setPassword(e.target.value)
           }}
         ></input>
-        <label>Password</label>
-        <input
-          type="text"
-          onChange={e => {
-            setUserName(e.target.value)
+        <button
+          onClick={e => {
+            NewUser()
+            e.preventDefault()
           }}
-        ></input>
-        <button onClick={() => NewUser()}>Sign up</button>
+        >
+          Sign up
+        </button>
       </form>
     </>
   )

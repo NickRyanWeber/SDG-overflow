@@ -59,7 +59,14 @@ const Login = () => {
         >
           Log In
         </button>
-        <button onClick={() => getSecretThing()}>get the secret thing</button>
+        <button
+          onClick={e => {
+            getSecretThing()
+            e.preventDefault()
+          }}
+        >
+          get the secret thing
+        </button>
       </form>
     </>
   )
