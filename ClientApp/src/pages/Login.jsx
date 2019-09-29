@@ -52,7 +52,13 @@ const Login = () => {
             setPassword(e.target.value)
           }}
         ></input>
-        <button onClick={() => LogIn()}>Log In</button>
+        <button
+          onClick={() => {
+            LogIn()
+          }}
+        >
+          Log In
+        </button>
         <button onClick={() => getSecretThing()}>get the secret thing</button>
       </form>
     </>

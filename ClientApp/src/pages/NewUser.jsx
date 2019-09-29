@@ -1,19 +1,17 @@
-import React, { Component, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 
-export class NewUser extends Component {
-  // not sure if this is needed, so keeping it for now
-  // static displayName = NewUser.name
+const NewUser = () => {
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [userName, setUserName] = useState('')
 
-  // doesn't like useState for some reason. Building another to test
-  // const [email, setEmail] = useState("")
-  // const [password, setPassword] = useState("")
-
-  NewUser = () => {
-    axios
+  const NewUser = async () => {
+    const data = await axios
       .post('/auth/register', {
-        email: 'test@test.com',
-        password: 'password123'
+        Email: email,
+        Password: password,
+        UserName: userName
       })
       .then(resp => {
         console.log(resp.data)
@@ -21,17 +19,52 @@ export class NewUser extends Component {
       })
   }
 
-  render() {
-    return (
-      <div>
-        <form className="email-password-form">
-          <label>Email</label>
-          <input type="text"></input>
-          <label>Password</label>
-          <input type="password"></input>
-          <button onClick={this.NewUser}>Sign up</button>
-        </form>
-      </div>
-    )
-  }
+  return (
+    <>
+      <form className="email-password-form">
+        <label>Email</label>
+        <input
+          type="text"
+          onChange={e => {
+            setEmail(e.target.value)
+          }}
+        ></input>
+        <label>Password</label>
+        <input
+          type="password"
+          onChange={e => {
+            setPassword(e.target.value)
+          }}
+        ></input>
+        <label>Password</label>
+        <input
+          type="text"
+          onChange={e => {
+            setUserName(e.target.value)
+          }}
+        ></input>
+        <button onClick={() => NewUser()}>Sign up</button>
+      </form>
+    </>
+  )
 }
+
+export default NewUser
+
+// BREAK
+
+// import React, { Component, useEffect, useState } from 'react'
+// import axios from 'axios'
+
+// export class NewUser extends Component {
+// not sure if this is needed, so keeping it for now
+// static displayName = NewUser.name
+
+// doesn't like useState for some reason. Building another to test
+// const [email, setEmail] = useState("")
+// const [password, setPassword] = useState("")
+
+//   render() {
+//     return <div></div>
+//   }
+// }
