@@ -9,7 +9,8 @@ import Login from './pages/Login.jsx'
 import NewUser from './pages/NewUser.jsx'
 import QuestionPage from './pages/QuestionPage.jsx'
 import Testing from './Testing'
-import NWTestComponent from './pages/NWTestComponent'
+// import NWTestComponent from './pages/NWTestComponent'
+import VotesComponent from './components/VotesComponent'
 
 export default class App extends Component {
   static displayName = App.name
@@ -25,7 +26,7 @@ export default class App extends Component {
         <Route path="/login" component={Login} />
         <Route path="/new-user" component={NewUser} />
         <Route path="/q/:qId" component={QuestionPage} />
-        <Route path="/nwtest" component={NWTestComponent} />
+        <Route path="/nwtest" component={VotesComponent} />
       </Layout>
     )
   }

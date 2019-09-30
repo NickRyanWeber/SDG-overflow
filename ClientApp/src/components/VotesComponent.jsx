@@ -20,12 +20,45 @@ import React, { useState } from 'react'
 const VotesComponent = () => {
   const [upvoted, setUpvoted] = useState(false)
   const [downvoted, setDownvoted] = useState(false)
+  const [voteCount, setVoteCount] = useState(props.qupvote - props.qdownvote)
+
+  const upVote = () => {
+    console.log('upvote')
+    let vote = downvoted ? 2 : 1
+    // API Post
+    // Increment voteCount
+    setVoteCount = voteCount + vote
+    // set Voted
+    setUpvoted = true
+    setDownvoted = false
+  }
+
+  const downVote = () => {
+    console.log('downvote')
+    let vote = upvoted ? 2 : 1
+    // API Post
+    // Increment voteCount
+    setVoteCount = voteCount - vote
+    // set Voted
+    setUpvoted = false
+    setDownvoted = true
+  }
 
   return (
     <>
-      <p>{question.qUpVotes - question.qDownVotes}</p>
-      <div className="arrow-up"></div>
-      <div className="arrow-down"></div>
+      <p>{voteCount}</p>
+      <div
+        className={`arrow-up ${upvoted ? 'voted' : ''}`}
+        onClick={() => {
+          upVote()
+        }}
+      ></div>
+      <div
+        className={`arrow-down ${downvoted ? 'voted' : ''}`}
+        onClick={() => {
+          downVote()
+        }}
+      ></div>
       <label>Votes</label>
     </>
   )
