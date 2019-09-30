@@ -3,8 +3,9 @@ import axios from 'axios'
 import VotesComponent from '../components/VotesComponent'
 
 const QuestionPage = props => {
-  console.log({ props })
+  // console.log({ props })
   const [question, setQuestion] = useState(null)
+  const [answer, setAnswer] = useState('')
   const questionId = props.match.params.qId
   const [newAnswer, setNewAnswer] = useState('')
 
@@ -12,6 +13,17 @@ const QuestionPage = props => {
     const resp = await axios.get(`/api/Questions/${questionId}`)
     console.log(resp.data)
     setQuestion(resp.data)
+  }
+
+  const PostAnswer = async () => {
+    const resp = await axios.post(`/api/Questions/${questionId}/Answer`, {
+      AnswerDescription: answer
+    })
+    if (resp.status === 200) {
+      setAnswer('')
+    }
+    console.log(resp)
+    GetQuestion()
   }
 
   useEffect(() => {
@@ -26,8 +38,6 @@ const QuestionPage = props => {
     return (
       <>
         <main>
-          {/* <ul className="questions-list">
-            <li className="question-specific"> */}
           <section className="question-specific">
             <div className="up-down-votes">
               <VotesComponent question={question} />
@@ -54,15 +64,15 @@ const QuestionPage = props => {
           <textarea
             rows="8"
             cols="100"
+            value={answer}
             onChange={e => {
-              setNewAnswer(e.target.value)
+              setAnswer(e.target.value)
             }}
           ></textarea>
           <button
             className="form-button"
-            onClick={e => {
-              // PostAnswer()
-              e.preventDefault()
+            onClick={() => {
+              PostAnswer()
             }}
           >
             Post your answer

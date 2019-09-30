@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import axios from 'axios'
-import { Link } from 'react-router-dom'
 
 const AskQuestionPage = () => {
   const [title, setTitle] = useState('')
@@ -13,8 +12,11 @@ const AskQuestionPage = () => {
       questionDescription: question,
       Username: userName
     })
-    console.log(resp.data)
     sessionStorage.setItem('token', resp.data.token)
+    console.log(resp.data.id)
+    if (resp.status === 200) {
+      window.location.replace(`/q/${resp.data.id}`)
+    }
   }
 
   return (
@@ -36,17 +38,15 @@ const AskQuestionPage = () => {
             setQuestion(e.target.value)
           }}
         ></textarea>
-        <Link to={`/q/${question.id}`}>
-          <button
-            className="form-button"
-            onClick={e => {
-              Question()
-              e.preventDefault()
-            }}
-          >
-            Post your question
-          </button>
-        </Link>
+        <button
+          className="form-button"
+          onClick={e => {
+            Question()
+            e.preventDefault()
+          }}
+        >
+          Post your question
+        </button>
       </form>
     </>
   )
