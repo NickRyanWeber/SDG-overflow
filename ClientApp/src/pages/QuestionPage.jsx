@@ -4,7 +4,7 @@ import VotesComponent from '../components/VotesComponent'
 
 const QuestionPage = props => {
   console.log({ props })
-  const [question, setQuestion] = useState([])
+  const [question, setQuestion] = useState(null)
   const questionId = props.match.params.qId
 
   const GetQuestion = async () => {
@@ -21,39 +21,43 @@ const QuestionPage = props => {
     console.log(question)
   }, [question])
 
-  return (
-    <>
-      <section>
-        <ul className="questions-list">
-          <li className="question-specific">
-            <div className="up-down-votes">
-              <VotesComponent question={question} />
-            </div>
-            <div>
-              <h4 className="category-text"> {question.questionTitle}</h4>
-              <p>{question.questionDescription}</p>
-            </div>
-          </li>
-        </ul>
-        <textarea
-          rows="8"
-          cols="100"
-          onChange={e => {
-            setQuestion(e.target.value)
-          }}
-        ></textarea>
-        <button
-          className="form-button"
-          onClick={e => {
-            // PostAnswer()
-            e.preventDefault()
-          }}
-        >
-          Post your answer
-        </button>
-      </section>
-    </>
-  )
+  if (question) {
+    return (
+      <>
+        <section>
+          <ul className="questions-list">
+            <li className="question-specific">
+              <div className="up-down-votes">
+                <VotesComponent question={question} />
+              </div>
+              <div>
+                <h4 className="category-text"> {question.questionTitle}</h4>
+                <p>{question.questionDescription}</p>
+              </div>
+            </li>
+          </ul>
+          <textarea
+            rows="8"
+            cols="100"
+            onChange={e => {
+              setQuestion(e.target.value)
+            }}
+          ></textarea>
+          <button
+            className="form-button"
+            onClick={e => {
+              // PostAnswer()
+              e.preventDefault()
+            }}
+          >
+            Post your answer
+          </button>
+        </section>
+      </>
+    )
+  } else {
+    return <div>Text Loading...</div>
+  }
 }
 
 export default QuestionPage
