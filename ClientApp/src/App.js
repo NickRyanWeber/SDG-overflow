@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Route } from 'react-router'
 import { Layout } from './components/Layout'
-import { Home } from './pages/Home'
+import Home from './pages/Home.jsx'
 import { FetchData } from './pages/FetchData'
 import { Counter } from './pages/Counter'
 import AskQuestionPage from './pages/AskQuestionPage.jsx'

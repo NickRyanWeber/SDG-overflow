@@ -36,3 +36,12 @@ html {
 .form-button {
   margin: 1rem 0rem 0rem 0rem;
 }
+
+.ask-question-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.ask-question-form > button {
+  max-width: 10rem;
+}

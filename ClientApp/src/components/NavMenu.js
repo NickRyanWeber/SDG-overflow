@@ -57,7 +57,7 @@ const NavMenu = () => {
                 />
               </NavItem>
               <NavItem>
-                <NavLink tag={Link} className="text-dark" to="/q/:qId">
+                <NavLink tag={Link} className="text-dark" to="/new-question">
                   Ask Question
                 </NavLink>
               </NavItem>
