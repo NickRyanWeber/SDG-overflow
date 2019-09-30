@@ -25,16 +25,23 @@ const QuestionPage = props => {
     return (
       <>
         <section>
-          <ul className="questions-list">
-            <li className="question-specific">
-              <div className="up-down-votes">
-                <VotesComponent question={question} />
-              </div>
-              <div>
-                <h4 className="category-text"> {question.questionTitle}</h4>
-                <p>{question.questionDescription}</p>
-              </div>
-            </li>
+          {/* <ul className="questions-list">
+            <li className="question-specific"> */}
+          <div className="up-down-votes">
+            <VotesComponent question={question} />
+          </div>
+          <div>
+            <h4 className="category-text"> {question.questionTitle}</h4>
+            <p>{question.questionDescription}</p>
+          </div>
+          <ul>
+            {question.answer.map(a => {
+              return (
+                <li>
+                  <p>{a.answerDescription}</p>
+                </li>
+              )
+            })}
           </ul>
           <textarea
             rows="8"

@@ -94,5 +94,21 @@ namespace SDG_overflow.Controllers
         return question;
       }
     }
+
+    [HttpPatch("{id}/downVote")]
+    public ActionResult<Question> updateDownVote(int id)
+    {
+      var question = context.Question.FirstOrDefault(q => q.Id == id);
+      if (question == null)
+      {
+        return NotFound();
+      }
+      else
+      {
+        question.QDownVotes += 1;
+        context.SaveChanges();
+        return question;
+      }
+    }
   }
 }
