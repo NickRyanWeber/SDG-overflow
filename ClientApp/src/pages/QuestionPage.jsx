@@ -35,9 +35,10 @@ const QuestionPage = props => {
             <p>{question.questionDescription}</p>
           </div>
           <ul>
-            {question.answer.map(a => {
+            {question.answer.map((a, i) => {
               return (
-                <li>
+                <li key={i}>
+                  <VotesComponent question={a} />
                   <p>{a.answerDescription}</p>
                 </li>
               )

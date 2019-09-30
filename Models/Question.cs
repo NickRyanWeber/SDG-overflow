@@ -8,8 +8,8 @@ namespace SDG_overflow.Models
     public int Id { get; set; }
     public string QuestionTitle { get; set; }
     public string QuestionDescription { get; set; }
-    public int QUpVotes { get; set; }
-    public int QDownVotes { get; set; }
+    public int UpVotes { get; set; }
+    public int DownVotes { get; set; }
     public DateTime DateCreated { get; set; } = DateTime.Now;
     public List<Answer> Answer { get; set; } = new List<Answer>();
     public int? UserId { get; set; }

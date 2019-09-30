@@ -80,7 +80,7 @@ namespace SDG_overflow.Controllers
     }
 
     [HttpPatch("{id}/upVote")]
-    public ActionResult<Question> updateUpVote(int id)
+    public ActionResult<Question> updateQuestionUpVote(int id)
     {
       var question = context.Question.FirstOrDefault(q => q.Id == id);
       if (question == null)
@@ -89,9 +89,24 @@ namespace SDG_overflow.Controllers
       }
       else
       {
-        question.QUpVotes += 1;
+        question.UpVotes += 1;
         context.SaveChanges();
         return question;
+      }
+    }
+    [HttpPatch("{qId}/Answer/{aId}/upVote")]
+    public ActionResult<Answer> updateAnswerUpVote(int qId, int aId)
+    {
+      var answer = context.Answer.FirstOrDefault(a => a.Id == aId);
+      if (answer == null)
+      {
+        return NotFound();
+      }
+      else
+      {
+        answer.UpVotes += 1;
+        context.SaveChanges();
+        return answer;
       }
     }
 
@@ -105,9 +120,25 @@ namespace SDG_overflow.Controllers
       }
       else
       {
-        question.QDownVotes += 1;
+        question.DownVotes += 1;
         context.SaveChanges();
         return question;
+      }
+    }
+
+    [HttpPatch("{qId}/Answer/{aId}/downVote")]
+    public ActionResult<Answer> updateAnswerDownVote(int id, int aId)
+    {
+      var answer = context.Answer.FirstOrDefault(a => a.Id == aId);
+      if (answer == null)
+      {
+        return NotFound();
+      }
+      else
+      {
+        answer.DownVotes += 1;
+        context.SaveChanges();
+        return answer;
       }
     }
   }
