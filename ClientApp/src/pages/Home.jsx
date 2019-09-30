@@ -32,17 +32,17 @@ const Home = () => {
             return (
               // this needs to bee formatted
               <li className="question-specific" key={i}>
-                <div>
-                  <p>{question.qUpVotes - question.qDownVotes}</p>
+                <div className="up-down-votes">
                   <div className="arrow-up"></div>
+                  <span>{question.qUpVotes - question.qDownVotes}</span>
                   <div className="arrow-down"></div>
-                  <label>Votes</label>
                 </div>
-                {/* this links to undefined, not sure where to fix it */}
-                <Link to={`/q/${question.id}`}>
-                  <h4 className="category-text"> {question.questionTitle}</h4>
-                </Link>
-                <p>{question.questionDescription}</p>
+                <div>
+                  <Link to={`/q/${question.id}`}>
+                    <h4 className="category-text"> {question.questionTitle}</h4>
+                  </Link>
+                  <p>{question.questionDescription}</p>
+                </div>
               </li>
             )
           })}

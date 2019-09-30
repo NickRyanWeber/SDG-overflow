@@ -2,13 +2,14 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 
 const QuestionPage = props => {
-  const [oneQuestion, setOneQuestion] = useState([])
-  const questionId = props.match.params.question
+  console.log({ props })
+  const [question, setQuestion] = useState([])
+  const questionId = props.match.params.qId
 
   const GetQuestion = async () => {
     const resp = await axios.get(`/api/questions/${questionId}`)
     console.log(resp.data)
-    setOneQuestion(resp.data)
+    setQuestion(resp.data)
   }
 
   useEffect(() => {
@@ -18,24 +19,27 @@ const QuestionPage = props => {
   return (
     <>
       <section>
-        <h1>Question Page</h1>
         <ul className="questions-list">
-          {oneQuestion.map((q, i) => {
-            return (
-              // this needs to bee formatted
-              <li className="question-specific" key={i}>
-                <div>
-                  <p>{q.qUpVotes - q.qDownVotes}</p>
-                  <div class="arrow-up"></div>
-                  <div class="arrow-down"></div>
-                  <label>Votes</label>
-                </div>
-                <h4 className="category-text"> {q.questionTitle}</h4>
-                <p>{q.questionDescription}</p>
-              </li>
-            )
-          })}
+          {/* this needs to bee formatted */}
+          <li className="question-specific">
+            <div className="up-down-votes">
+              <div class="arrow-up"></div>
+              <span>{question.qUpVotes - question.qDownVotes}</span>
+              <div class="arrow-down"></div>
+            </div>
+            <div>
+              <h4 className="category-text"> {question.questionTitle}</h4>
+              <p>{question.questionDescription}</p>
+            </div>
+          </li>
         </ul>
+        <textarea
+          rows="8"
+          cols="100"
+          onChange={e => {
+            setQuestion(e.target.value)
+          }}
+        ></textarea>
       </section>
     </>
   )
