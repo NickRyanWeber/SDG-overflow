@@ -45,3 +45,25 @@ html {
 .ask-question-form > button {
   max-width: 10rem;
 }
+
+.arrow-up {
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+
+  border-bottom: 15px solid #bbc0c4;
+  margin: 0rem 0rem 0.25rem 0;
+  cursor: pointer !important;
+}
+
+.arrow-down {
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+
+  border-top: 15px solid #bbc0c4;
+  margin: 0.25rem 0rem 0rem 0;
+  cursor: pointer !important;
+}

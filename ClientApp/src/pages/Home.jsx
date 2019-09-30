@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 
 const Home = () => {
   const [questions, setQuestions] = useState([])
+  const [votes, setVotes] = useState([])
 
   const GetQuestions = async () => {
     const resp = await axios.get('/api/questions').then(resp => {
@@ -12,8 +13,16 @@ const Home = () => {
     })
   }
 
+  const RecordVotes = async () => {
+    const resp = await axios.post('/api/questions').then(resp => {
+      console.log(resp.data)
+      setVotes(resp.data)
+    })
+  }
+
   useEffect(() => {
     GetQuestions()
+    RecordVotes()
   }, [])
 
   return (
@@ -24,11 +33,12 @@ const Home = () => {
             return (
               // this needs to bee formatted
               <li className="question-specific" key={i}>
-                <p>
-                  {/* this needs to be turned into an equation */}
-                  {question.qUpVotes} - {question.qDownVotes}
-                </p>
-                <label>Votes</label>
+                <div>
+                  <p>{question.qUpVotes - question.qDownVotes}</p>
+                  <div className="arrow-up"></div>
+                  <div className="arrow-down"></div>
+                  <label>Votes</label>
+                </div>
                 {/* this links to undefined, not sure where to fix it */}
                 <Link to={`/q/${question.Id}`}>
                   <h4 className="category-text"> {question.questionTitle}</h4>

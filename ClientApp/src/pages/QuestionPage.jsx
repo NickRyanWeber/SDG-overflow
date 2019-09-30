@@ -25,11 +25,12 @@ const QuestionPage = props => {
             return (
               // this needs to bee formatted
               <li className="question-specific" key={i}>
-                <p>
-                  {/* this needs to be turned into an equation */}
-                  {q.qUpVotes} - {q.qDownVotes}
-                </p>
-                <label>Votes</label>
+                <div>
+                  <p>{q.qUpVotes - q.qDownVotes}</p>
+                  <div class="arrow-up"></div>
+                  <div class="arrow-down"></div>
+                  <label>Votes</label>
+                </div>
                 <h4 className="category-text"> {q.questionTitle}</h4>
                 <p>{q.questionDescription}</p>
               </li>
