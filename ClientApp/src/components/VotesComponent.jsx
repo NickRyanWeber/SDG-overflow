@@ -32,20 +32,14 @@ const VotesComponent = props => {
     // let vote = downVoted ? 2 : 1
     // Increment voteCount
     // setVoteCount(question.qUpVotes - question.qDownVotes + vote)
-    const _question = question
-    if (downVoted) {
-      _question.qDownVotes = _question.qDownVotes - 1
-    }
-    _question.qUpVotes = _question.qUpVotes + 1
 
-    setQuestion(_question)
+    console.log('something')
+    console.log(props)
     // API Post
-    const resp = await axios.put(
-      `/api/Questions/${props.question.questionId}`,
-      {
-        question
-      }
-    )
+    const resp = await axios.patch(`/api/Questions/${props.question.id}/upVote`)
+    setQuestion(resp.data)
+
+    console.log(resp.data)
     // set Voted
     setUpVoted(true)
     setDownVoted(false)
@@ -63,8 +57,9 @@ const VotesComponent = props => {
   // }
 
   useEffect(() => {
+    console.log(props)
     // setVoteCount(props.question.qUpVotes - props.question.qDownVotes)
-    setQuestion(props)
+    setQuestion(props.question)
     // setApiUrl(props.match.params.qId)
   }, [props])
 
@@ -76,7 +71,11 @@ const VotesComponent = props => {
           upVote()
         }}
       ></div>
-      <span>{question.qUpVotes - question.qDownVotes}</span>
+      <span>
+        {question.qUpVotes && question.qDownVotes
+          ? question.qUpVotes - question.qDownVotes
+          : 0}
+      </span>
       <div
         className={`arrow-down ${downVoted ? 'voted' : ''}`}
         // onClick={() => {

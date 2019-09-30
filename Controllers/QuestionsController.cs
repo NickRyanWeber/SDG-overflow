@@ -78,5 +78,21 @@ namespace SDG_overflow.Controllers
       var questions = context.Question.OrderBy(q => q.DateCreated);
       return questions.ToList();
     }
+
+    [HttpPatch("{id}/upVote")]
+    public ActionResult<Question> updateUpVote(int id)
+    {
+      var question = context.Question.FirstOrDefault(q => q.Id == id);
+      if (question == null)
+      {
+        return NotFound();
+      }
+      else
+      {
+        question.QUpVotes += 1;
+        context.SaveChanges();
+        return question;
+      }
+    }
   }
 }
