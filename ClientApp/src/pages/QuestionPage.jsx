@@ -24,26 +24,32 @@ const QuestionPage = props => {
   if (question) {
     return (
       <>
-        <section>
+        <main>
           {/* <ul className="questions-list">
             <li className="question-specific"> */}
-          <div className="up-down-votes">
-            <VotesComponent question={question} />
-          </div>
-          <div>
-            <h4 className="category-text"> {question.questionTitle}</h4>
-            <p>{question.questionDescription}</p>
-          </div>
-          <ul>
-            {question.answer.map((a, i) => {
-              return (
-                <li key={i}>
-                  <VotesComponent question={a} />
-                  <p>{a.answerDescription}</p>
-                </li>
-              )
-            })}
-          </ul>
+          <section className="question-specific">
+            <div className="up-down-votes">
+              <VotesComponent question={question} />
+            </div>
+            <div>
+              <h4 className="category-text"> {question.questionTitle}</h4>
+              <p>{question.questionDescription}</p>
+            </div>
+          </section>
+          <section>
+            <ul className="questions-list">
+              {question.answer.map((a, i) => {
+                return (
+                  <li className="question-specific" key={i}>
+                    <div className="up-down-votes">
+                      <VotesComponent question={a} />
+                    </div>
+                    <p>{a.answerDescription}</p>
+                  </li>
+                )
+              })}
+            </ul>
+          </section>
           <textarea
             rows="8"
             cols="100"
@@ -60,7 +66,7 @@ const QuestionPage = props => {
           >
             Post your answer
           </button>
-        </section>
+        </main>
       </>
     )
   } else {

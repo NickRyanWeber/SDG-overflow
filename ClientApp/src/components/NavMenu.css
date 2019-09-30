@@ -70,6 +70,7 @@ html {
 
 .question-specific {
   display: flex;
+  align-items: center;
 }
 
 .up-down-votes {
