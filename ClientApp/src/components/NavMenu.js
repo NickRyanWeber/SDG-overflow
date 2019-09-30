@@ -7,7 +7,7 @@ import {
   Container,
   Navbar,
   NavbarBrand,
-  NavbarToggler,
+  // NavbarToggler,
   NavItem,
   NavLink
 } from 'reactstrap'

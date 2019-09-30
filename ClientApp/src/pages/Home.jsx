@@ -4,25 +4,24 @@ import { Link } from 'react-router-dom'
 
 const Home = () => {
   const [questions, setQuestions] = useState([])
-  const [votes, setVotes] = useState([])
+  // const [votes, setVotes] = useState([])
 
   const GetQuestions = async () => {
-    const resp = await axios.get('/api/questions').then(resp => {
-      console.log(resp.data)
-      setQuestions(resp.data)
-    })
+    const resp = await axios.get('/api/questions')
+    console.log(resp.data)
+    setQuestions(resp.data)
   }
 
-  const RecordVotes = async () => {
-    const resp = await axios.post('/api/questions').then(resp => {
-      console.log(resp.data)
-      setVotes(resp.data)
-    })
-  }
+  // const RecordVotes = async () => {
+  //   const resp = await axios.post('/api/questions').then(resp => {
+  //     console.log(resp.data)
+  //     setVotes(resp.data)
+  //   })
+  // }
 
   useEffect(() => {
     GetQuestions()
-    RecordVotes()
+    // RecordVotes()
   }, [])
 
   return (
@@ -40,7 +39,7 @@ const Home = () => {
                   <label>Votes</label>
                 </div>
                 {/* this links to undefined, not sure where to fix it */}
-                <Link to={`/q/${question.Id}`}>
+                <Link to={`/q/${question.id}`}>
                   <h4 className="category-text"> {question.questionTitle}</h4>
                 </Link>
                 <p>{question.questionDescription}</p>

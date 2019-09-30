@@ -2,14 +2,13 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 
 const QuestionPage = props => {
-  const [question, setQuestion] = useState([])
+  const [oneQuestion, setOneQuestion] = useState([])
   const questionId = props.match.params.question
 
   const GetQuestion = async () => {
-    const resp = await axios.get(`/api/questions/${questionId}`).then(resp => {
-      console.log(resp.data)
-      setQuestion(resp.data)
-    })
+    const resp = await axios.get(`/api/questions/${questionId}`)
+    console.log(resp.data)
+    setOneQuestion(resp.data)
   }
 
   useEffect(() => {
@@ -21,7 +20,7 @@ const QuestionPage = props => {
       <section>
         <h1>Question Page</h1>
         <ul className="questions-list">
-          {question.map((q, i) => {
+          {oneQuestion.map((q, i) => {
             return (
               // this needs to bee formatted
               <li className="question-specific" key={i}>

@@ -1,22 +1,20 @@
 import React, { useState } from 'react'
 import axios from 'axios'
+import { Link } from 'react-router-dom'
 
 const AskQuestionPage = () => {
   const [title, setTitle] = useState('')
   const [question, setQuestion] = useState('')
   const [userName, setUserName] = useState('')
 
-  const Question = async e => {
-    const data = await axios
-      .post('/api/questions', {
-        questionTitle: title,
-        questionDescription: question,
-        Username: userName
-      })
-      .then(resp => {
-        console.log(resp.data)
-        sessionStorage.setItem('token', resp.data.token)
-      })
+  const Question = async () => {
+    const resp = await axios.post('/api/questions', {
+      questionTitle: title,
+      questionDescription: question,
+      Username: userName
+    })
+    console.log(resp.data)
+    sessionStorage.setItem('token', resp.data.token)
   }
 
   return (
@@ -38,15 +36,17 @@ const AskQuestionPage = () => {
             setQuestion(e.target.value)
           }}
         ></textarea>
-        <button
-          className="form-button"
-          onClick={e => {
-            Question()
-            e.preventDefault()
-          }}
-        >
-          Post your question
-        </button>
+        <Link to={`/q/${question.id}`}>
+          <button
+            className="form-button"
+            onClick={e => {
+              Question()
+              e.preventDefault()
+            }}
+          >
+            Post your question
+          </button>
+        </Link>
       </form>
     </>
   )

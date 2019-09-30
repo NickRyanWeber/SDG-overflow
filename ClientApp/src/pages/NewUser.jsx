@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import axios from 'axios'
 
 const NewUser = () => {
@@ -6,17 +6,14 @@ const NewUser = () => {
   const [password, setPassword] = useState('')
   const [userName, setUserName] = useState('')
 
-  const NewUser = async e => {
-    const data = await axios
-      .post('/auth/register', {
-        Email: email,
-        Password: password,
-        UserName: userName
-      })
-      .then(resp => {
-        console.log(resp.data)
-        sessionStorage.setItem('token', resp.data.token)
-      })
+  const NewUser = async () => {
+    const resp = await axios.post('/auth/register', {
+      Email: email,
+      Password: password,
+      UserName: userName
+    })
+    console.log(resp.data)
+    sessionStorage.setItem('token', resp.data.token)
   }
 
   return (

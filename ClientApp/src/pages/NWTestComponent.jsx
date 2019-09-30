@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 
 const NWTestComponent = () => {
-  const [test, setTest] = useState('')
+  // const [test, setTest] = useState('')
 
   return (
     <>

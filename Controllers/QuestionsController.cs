@@ -45,7 +45,5 @@ namespace SDG_overflow.Controllers
       var questions = context.Question.OrderBy(q => q.DateCreated);
       return questions.ToList();
     }
-
-
   }
 }
