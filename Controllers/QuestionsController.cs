@@ -25,6 +25,20 @@ namespace SDG_overflow.Controllers
       return entry;
     }
 
+    [HttpGet("{id}")]
+    public ActionResult<Question> GetOneQuestion(int id)
+    {
+      var oneQuestion = context.Question.FirstOrDefault(q => q.Id == id);
+      if (oneQuestion == null)
+      {
+        return NotFound();
+      }
+      else
+      {
+        return Ok(oneQuestion);
+      }
+    }
+
     [HttpGet]
     public ActionResult<IEnumerable<Question>> GetAllQuestions()
     {
