@@ -19,6 +19,7 @@ const QuestionPage = props => {
   return (
     <>
       <section>
+        <h1>Question Page</h1>
         <ul className="questions-list">
           {question.map((q, i) => {
             return (
