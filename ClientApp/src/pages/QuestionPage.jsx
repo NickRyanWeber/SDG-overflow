@@ -6,6 +6,7 @@ const QuestionPage = props => {
   console.log({ props })
   const [question, setQuestion] = useState(null)
   const questionId = props.match.params.qId
+  const [newAnswer, setNewAnswer] = useState('')
 
   const GetQuestion = async () => {
     const resp = await axios.get(`/api/Questions/${questionId}`)
@@ -54,7 +55,7 @@ const QuestionPage = props => {
             rows="8"
             cols="100"
             onChange={e => {
-              setQuestion(e.target.value)
+              setNewAnswer(e.target.value)
             }}
           ></textarea>
           <button
