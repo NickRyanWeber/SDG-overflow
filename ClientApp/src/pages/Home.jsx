@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
+import VotesComponent from '../components/VotesComponent'
 
 const Home = () => {
   const [questions, setQuestions] = useState([])
-  // const [votes, setVotes] = useState([])
 
   const GetQuestions = async () => {
     const resp = await axios.get('/api/questions')
@@ -21,7 +21,6 @@ const Home = () => {
 
   useEffect(() => {
     GetQuestions()
-    // RecordVotes()
   }, [])
 
   return (
@@ -30,12 +29,9 @@ const Home = () => {
         <ul className="questions-list">
           {questions.map((question, i) => {
             return (
-              // this needs to bee formatted
               <li className="question-specific" key={i}>
                 <div className="up-down-votes">
-                  <div className="arrow-up"></div>
-                  <span>{question.qUpVotes - question.qDownVotes}</span>
-                  <div className="arrow-down"></div>
+                  <VotesComponent question={question} />
                 </div>
                 <div>
                   <Link to={`/q/${question.id}`}>

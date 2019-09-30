@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
+import VotesComponent from '../components/VotesComponent'
 
 const QuestionPage = props => {
   console.log({ props })
@@ -7,7 +8,7 @@ const QuestionPage = props => {
   const questionId = props.match.params.qId
 
   const GetQuestion = async () => {
-    const resp = await axios.get(`/api/questions/${questionId}`)
+    const resp = await axios.get(`/api/Questions/${questionId}`)
     console.log(resp.data)
     setQuestion(resp.data)
   }
@@ -16,16 +17,17 @@ const QuestionPage = props => {
     GetQuestion()
   }, [])
 
+  useEffect(() => {
+    console.log(question)
+  }, [question])
+
   return (
     <>
       <section>
         <ul className="questions-list">
-          {/* this needs to bee formatted */}
           <li className="question-specific">
             <div className="up-down-votes">
-              <div class="arrow-up"></div>
-              <span>{question.qUpVotes - question.qDownVotes}</span>
-              <div class="arrow-down"></div>
+              <VotesComponent question={question} />
             </div>
             <div>
               <h4 className="category-text"> {question.questionTitle}</h4>
@@ -40,6 +42,15 @@ const QuestionPage = props => {
             setQuestion(e.target.value)
           }}
         ></textarea>
+        <button
+          className="form-button"
+          onClick={e => {
+            // PostAnswer()
+            e.preventDefault()
+          }}
+        >
+          Post your answer
+        </button>
       </section>
     </>
   )

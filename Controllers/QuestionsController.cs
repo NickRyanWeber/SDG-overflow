@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using sdg_overflow;
 using SDG_overflow.Models;
 
@@ -25,10 +26,42 @@ namespace SDG_overflow.Controllers
       return entry;
     }
 
+    [HttpPost("{id}/Answer")]
+    public ActionResult<Question> CreateAnswer(int id, [FromBody]Answer answer)
+    {
+      var question = context.Question.FirstOrDefault(q => q.Id == id);
+      if (question == null)
+      {
+        return NotFound();
+      }
+      else
+      {
+        answer.QuestionId = id;
+        context.Answer.Add(answer);
+        context.SaveChanges();
+        return Ok(new { });
+      }
+    }
+
+    [HttpPut("{id}")]
+    public ActionResult<Question> updateVoteCount(int id, [FromBody]Question update)
+    {
+      if (id != update.Id)
+      {
+        return BadRequest();
+      }
+      context.Entry(update).State = EntityState.Modified;
+      context.SaveChanges();
+      return update;
+    }
+    // [HttpPut("{id}/Answer/{aId}")]
+    // public ActionResult
+
+
     [HttpGet("{id}")]
     public ActionResult<Question> GetOneQuestion(int id)
     {
-      var oneQuestion = context.Question.FirstOrDefault(q => q.Id == id);
+      var oneQuestion = context.Question.Include(i => i.Answer).FirstOrDefault(q => q.Id == id);
       if (oneQuestion == null)
       {
         return NotFound();
