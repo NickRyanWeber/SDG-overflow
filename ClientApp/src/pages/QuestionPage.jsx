@@ -37,7 +37,7 @@ const QuestionPage = props => {
   if (question) {
     return (
       <>
-        <main>
+        <main className="ask-question-form">
           <section className="question-specific">
             <div className="up-down-votes">
               <VotesComponent question={question} />
